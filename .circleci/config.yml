@@ -27,10 +27,6 @@ jobs:
           name: Node Version
           command: node --version
 
-      - run:
-          name: Avoid Hosts Unknown For Github
-          command: echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
-
       - restore_cache:
           keys:
             - v1-deps-{{ checksum "yarn.lock" }}
