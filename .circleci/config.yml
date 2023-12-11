@@ -44,6 +44,10 @@ jobs:
             - node_modules
 
       - run:
+          name: Print Files
+          command: ls -ltr
+
+      - run:
           name: Build App
           command: yarn clear && yarn build
 
