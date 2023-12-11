@@ -21,7 +21,7 @@ jobs:
 
       - run:
           name: Create Workspace Dir
-          command: mkdir -p workspace
+          command: mkdir -p ./tmp/workspace
 
       - run:
           name: Node Version
