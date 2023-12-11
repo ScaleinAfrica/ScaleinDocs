@@ -87,6 +87,12 @@ jobs:
           command: pwd
 
       - run:
+          name: Set Github Details
+          command: |
+            git config --global user.email "techstack@scaleinafrica.com"
+            git config --global user.name "ScaleinAfrica"
+
+      - run:
           name: Deploy To Github Pages
           command: yarn deploy
           environment:
