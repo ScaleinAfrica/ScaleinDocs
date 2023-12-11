@@ -75,7 +75,7 @@ jobs:
 
       - run:
           name: Print Files
-          command: ls -ltr
+          command: ls -ltr && pwd
 
       - run:
           name: Deploy To Github Pages
