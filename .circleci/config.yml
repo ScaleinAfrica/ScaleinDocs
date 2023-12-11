@@ -29,7 +29,7 @@ jobs:
 
       - restore_cache:
           keys:
-            - v1-deps-{{ checksum "package-lock.json" }}
+            - v1-deps-{{ checksum "yarn.lock" }}
             - v1-deps-
 
       # install dependencies
@@ -39,7 +39,7 @@ jobs:
 
       # save any changes to the cache
       - save_cache:
-          key: v1-deps-{{ checksum "package-lock.json" }}
+          key: v1-deps-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
 
@@ -83,9 +83,10 @@ jobs:
       - run:
           name: Deploy To Github Pages
           command: yarn deploy
-          environment: CURRENT_BRANCH=master
-            USE_SSH=true
-            GIT_USER=ScaleinAfrica
+          environment:
+            CURRENT_BRANCH: master
+            USE_SSH: true
+            GIT_USER: ScaleinAfrica
 
 workflows:
   deploy-staging:
