@@ -9,7 +9,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Scalein Dev Docs",
-  tagline: "Dinosaurs are cool",
+  tagline: "Everything you need to know about Scalein core tech!",
   favicon: "img/favicon.ico",
   organizationName: "ScaleinAfrica",
   projectName: "dev-docs",
@@ -67,10 +67,10 @@ const config = {
       // Replace with your project's social card
       image: "img/docusaurus-social-card.jpg",
       navbar: {
-        title: "My Site",
+        title: " Docs",
         logo: {
-          alt: "My Site Logo",
-          src: "img/logo.svg",
+          alt: "Scalein Logo",
+          src: "img/scalein-logo-main.png",
         },
         items: [
           {
