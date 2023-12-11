@@ -67,6 +67,7 @@ jobs:
             - ./docusaurus.config.js
             - ./package.json
             - ./yarn.lock
+            - ./node_modules
 
   deploy:
     docker:
