@@ -97,7 +97,7 @@ jobs:
           command: yarn deploy
           environment:
             CURRENT_BRANCH: master
-            USE_SSH: true
+            USE_SSH: "true"
             GIT_USER: ScaleinAfrica
 
 workflows:
