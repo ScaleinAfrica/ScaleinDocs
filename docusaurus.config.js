@@ -12,14 +12,14 @@ const config = {
   tagline: "Dinosaurs are cool",
   favicon: "img/favicon.ico",
   organizationName: "ScaleinAfrica",
-  projectName: "ScaleinDocs",
+  projectName: "docs",
   deploymentBranch: "gh-pages-live",
   trailingSlash: false,
   // Set the production url of your site here
   url: "https://scaleinafrica.github.io",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: "/scaleindocs",
+  baseUrl: "/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
