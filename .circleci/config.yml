@@ -1,0 +1,108 @@
+orbs:
+  node: circleci/node@5.1.0
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: cimg/node:18.19.0
+
+    working_directory: /tmp/workspace
+
+    steps:
+      # - add_ssh_keys:
+      #     fingerprints:
+      #       - "ef:78:e1:90:5f:b2:8a:8f:f9:e4:b4:c0:09:f3:ef:8d"
+      #       - "63:94:b8:e5:c4:8b:71:e1:31:6a:89:4c:c8:cd:95:84"
+      - checkout
+
+      - node/install:
+          install-yarn: true
+          node-version: "18.19"
+
+      - run:
+          name: Node Version
+          command: node --version
+
+      - run:
+          name: Avoid Hosts Unknown For Github
+          command: echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+
+      - restore_cache:
+          keys:
+            - v1-deps-{{ checksum "package-lock.json" }}
+            - v1-deps-
+
+      # install dependencies
+      - run:
+          name: Install Dependencies
+          command: yarn install
+
+      # save any changes to the cache
+      - save_cache:
+          key: v1-deps-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+
+      - run:
+          name: Build App
+          command: yarn clear && yarn build
+
+      - persist_to_workspace:
+          # Must be an absolute path, or relative path from working_directory. This is a directory in the execution
+          # environment which is taken to be the root directory of the workspace.
+          root: /tmp/workspace
+          # Must be relative path from root
+          paths:
+            - ./docs
+            - ./blog
+            - ./src
+            - ./build
+            - ./babel.config.js
+            - ./sidebars.js
+            - ./static
+            - docusaurus.config.js
+
+  deploy:
+    docker:
+      - image: cimg/node:18.19.0
+
+    steps:
+      # - add_ssh_keys:
+      #     fingerprints:
+      #       - "ef:78:e1:90:5f:b2:8a:8f:f9:e4:b4:c0:09:f3:ef:8d"
+      #       - "63:94:b8:e5:c4:8b:71:e1:31:6a:89:4c:c8:cd:95:84"
+
+      - run:
+          name: Avoid Hosts Unknown For Github
+          command: echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+
+      - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          at: /tmp/workspace
+
+      - run:
+          name: Deploy To Github Pages
+          command: yarn deploy
+          environment: CURRENT_BRANCH=master
+            USE_SSH=true
+            GIT_USER=ScaleinAfrica
+
+workflows:
+  deploy-staging:
+    jobs:
+      - build
+        filters:
+            branches:
+              only:
+                - gh-pages-live
+              ignore:
+                - /.*/
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - gh-pages-live
+              ignore:
+                - /.*/
