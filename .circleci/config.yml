@@ -90,8 +90,8 @@ jobs:
 workflows:
   deploy-staging:
     jobs:
-      - build
-        filters:
+      - build:
+          filters:
             branches:
               only:
                 - gh-pages-live
