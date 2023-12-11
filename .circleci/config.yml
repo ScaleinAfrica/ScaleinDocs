@@ -60,9 +60,9 @@ jobs:
             - ./babel.config.js
             - ./sidebars.js
             - ./static
-            - docusaurus.config.js
-            - package.json
-            - yarn.lock
+            - ./docusaurus.config.js
+            - ./package.json
+            - ./yarn.lock
 
   deploy:
     docker:
