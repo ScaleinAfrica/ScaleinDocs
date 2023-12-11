@@ -44,10 +44,6 @@ jobs:
             - node_modules
 
       - run:
-          name: Print Files
-          command: ls -ltr
-
-      - run:
           name: Build App
           command: yarn clear && yarn build
 
@@ -73,18 +69,13 @@ jobs:
       - image: cimg/node:18.19.0
 
     steps:
-      # - add_ssh_keys:
-      #     fingerprints:
-      #       - "ef:78:e1:90:5f:b2:8a:8f:f9:e4:b4:c0:09:f3:ef:8d"
-      #       - "63:94:b8:e5:c4:8b:71:e1:31:6a:89:4c:c8:cd:95:84"
-
-      # - run:
-      #     name: Avoid Hosts Unknown For Github
-      #     command: echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
-
       - attach_workspace:
           # Must be absolute path or relative path from working_directory
           at: /tmp/workspace
+
+      - run:
+          name: Print Files
+          command: ls -ltr
 
       - run:
           name: Deploy To Github Pages
