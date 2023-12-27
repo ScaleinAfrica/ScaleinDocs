@@ -2,14 +2,17 @@
 sidebar_position: 1
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Getting Started
 
-  :::tip Info
+  :::info Info
     This page was created to help you get started with running the app and
     developing it in a **local (development) environment**.
   :::
 
-
+<br />
 
 ## Setup & Installation
 
@@ -17,19 +20,39 @@ sidebar_position: 1
 
 | Technology  | Notes       | Required/Optional |
 |-------------|-------------|-------------------|
-| [**Node JS**](https://nodejs.org/en/download/)          | Core javascript runtime that all code-based microservices are run on| **Required** |
+| [**Node JS**](https://nodejs.org/en/download/)          | Core javascript runtime that all code-based microservices are run on. It is suggested that you **install a node version manager** that allows you to switch between various node versions with ease. | **Required** |
 | [**Docker**](https://docs.docker.com/desktop) | Containerisation technology on which we will run microservice architecture locally  | **Required**        |
 | [**Docker-Compose**](https://docs.docker.com/compose/)  | Technology that will allow us to define all microservices and run them together with one command      | **Required**        |
 | [**VSCode**](https://code.visualstudio.com)             | Main IDE used for software development, however, use whatever IDE you are most comfortable with | *Optional*        |
 | [**MongoDB Compass**](https://www.mongodb.com/products/tools/compass) | To be used to manage and manipulate database collections and documents manually for the main app (*database data*)   | **Required**    |
 | [**DBeaver**](https://dbeaver.io)  | Used to connect to and manipulate a user and authentication data in a Postgres database (managed by Supertokens) | *Optional* |
 
+<br />
+<br />
 
-## Generate a new site
+### Clone Scalein Repositories
 
-Generate a new Docusaurus site using the **classic template**.
+  :::warning
 
-The classic template will automatically be added to your project after you run the command:
+    To access all the below repositories, please reach out to your software dev lead.
+    Share your `@gitHubUsername` with your dev lead and request access to each of the
+    below repositories!
+
+  :::
+
+  <br />
+
+| Repository  | Description |
+|-------------|-------------|
+| [**Scalein User Frontend**](https://github.com/ScaleIn/SIUserPortal) | This repository contains the code for the **talent** and **business** web application. This is the main application that users will interact with via the web browser|
+| [**Auth Service**](https://github.com/ScaleinAfrica/AuthService) | This repository hosts the code for the (REST) authentication service. The authentication service **handles all matters pertaining to user authentication across all microservices** |
+| [**API Layer**](https://github.com/ScaleIn/ScaleInAPILayer) | This microservice **was** meant to act as a monolith. ***But this will being phased out over time*** in favour of a **microservice architecture**. In the interim however, most of our server-side API endpoints will be found within the **API Layer** |
+| [**Email Service**](https://github.com/ScaleinAfrica/EmailService) | This service hosts the code for the (REST) email service. The email service will **handle specific use cases where automated** (and templated) emails need to be sent to specific individuals |
+| [**Matching Engine**](https://github.com/ScaleIn/MatchingEngine) | The matching engine is a microservice that has one primary responsibility: **To select/choose the best candidates (Scalein talent) for a business**, based on the business' requirements |
+| [**Scalein Core**](https://github.com/ScaleIn/SI-Core) | The Scalein Core repository **holds the docker-compose configuration** that will allow you to run all the microservices at once via docker containers. It is **thus, the core repository that empowers your local development**|
+
+<br />
+
 
 ```bash
 npm init docusaurus@latest my-website classic
