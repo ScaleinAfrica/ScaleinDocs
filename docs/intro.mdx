@@ -1,0 +1,55 @@
+---
+sidebar_position: 1
+---
+
+# Getting Started
+
+  :::tip Info
+    This page was created to help you get started with running the app and
+    developing it in a **local (development) environment**.
+  :::
+
+
+
+## Setup & Installation
+
+### Pre-requisite Technologies
+
+| Technology  | Notes       | Required/Optional |
+|-------------|-------------|-------------------|
+| [**Node JS**](https://nodejs.org/en/download/)          | Core javascript runtime that all code-based microservices are run on| **Required** |
+| [**Docker**](https://docs.docker.com/desktop) | Containerisation technology on which we will run microservice architecture locally  | **Required**        |
+| [**Docker-Compose**](https://docs.docker.com/compose/)  | Technology that will allow us to define all microservices and run them together with one command      | **Required**        |
+| [**VSCode**](https://code.visualstudio.com)             | Main IDE used for software development, however, use whatever IDE you are most comfortable with | *Optional*        |
+| [**MongoDB Compass**](https://www.mongodb.com/products/tools/compass) | To be used to manage and manipulate database collections and documents manually for the main app (*database data*)   | **Required**    |
+| [**DBeaver**](https://dbeaver.io)  | Used to connect to and manipulate a user and authentication data in a Postgres database (managed by Supertokens) | *Optional* |
+
+
+## Generate a new site
+
+Generate a new Docusaurus site using the **classic template**.
+
+The classic template will automatically be added to your project after you run the command:
+
+```bash
+npm init docusaurus@latest my-website classic
+```
+
+You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+
+The command also installs all necessary dependencies you need to run Docusaurus.
+
+## Start your site
+
+Run the development server:
+
+```bash
+cd my-website
+npm run start
+```
+
+The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+
+The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+
+Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
